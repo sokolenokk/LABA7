@@ -1,7 +1,8 @@
 from laba7.shema import create_tables
 from laba7.repositories.clubs_repo import add_club, get_club_id_by_name
 from laba7.repositories.players_repo import add_player, \
-    find_players_by_position, find_players_younger_than
+    find_players_by_position, find_players_younger_than, \
+    get_players_with_clubs
 
 
 def seed_demo_data() -> None:
@@ -31,6 +32,19 @@ def main() -> None:
     print("Получить id клуба по имени параметризованный SELECT")
     club_id = get_club_id_by_name("FC Barcelona")
     print("id Барсы: ", club_id)
+    print()
+    print()
+
+
+    print("JOIN: игркоки + инфа о клубе")
+    joined = get_players_with_clubs()
+    for row in joined:
+        print(row)
+
+    print("JOIN: игркоки Барсы:")
+    joined_barca = get_players_with_clubs("FC Barcelona")
+    for row in joined_barca:
+        print(row)
 
 
 if __name__ == "__main__":

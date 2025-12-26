@@ -24,4 +24,9 @@ def create_tables() -> None:
             )
         """)
 
+        cursor.execute("""
+            CREATE UNIQUE INDEX IF NOT EXISTS idx_players_unique
+            ON players(full_name, club_id)
+        """)
+
         conn.commit()
