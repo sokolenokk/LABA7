@@ -29,4 +29,14 @@ def create_tables() -> None:
             ON players(full_name, club_id)
         """)
 
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_players_position
+            ON players(position)
+        """)
+
+        cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_players_age
+            ON players(age)
+        """)
+
         conn.commit()
